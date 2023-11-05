@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang=zh-CN>
+<head>
+<meta charset=utf-8 />
+<meta name=viewport content="width=device-width, initial-scale=1.0" />
+<title>Asymmetric Encryption for Online Chat</title>
+<link rel=icon href=./dist/img/icon.svg />
+<link rel=stylesheet href=./dist/css/main.css />
+</head>
+<body>
+<div class=container>
+<div class=left id=left>
+<ul id=name_list></ul>
+<form>
+<button type=button id=button_1></button>
+</form>
+<div class=add_new_box id=add_new_box>
+<div class=upper id=upper_1>
+<div class=inner_box id=add-1>
+<strong class=title>请为本次会话命名</strong>
+<input type=text id=chat_name />
+<div class=checkbox>
+<input type=checkbox id=storeornot />
+<label for=storeornot>Save</label>
+</div>
+</div>
+<div class=inner_box id=add-2>
+<strong class=title>
+这是本次会话的公钥<br /><br />
+<span id=my_pubkey></span>
+<br /><br />请将上方的公钥发送给对方
+</strong>
+</div>
+<div class=inner_box id=add-3>
+<strong class=title>请输入对方发来的公钥</strong>
+<textarea id=other_pubkey autocomplete=off></textarea>
+</div>
+</div>
+<div class=pre id=button_2></div>
+<div class=close id=button_3></div>
+<div class=next id=button_4></div>
+</div>
+</div>
+<div class=right id=right>
+<div class=upper id=upper_2>
+<ul id=chat_list></ul>
+</div>
+<form class=bottom>
+<textarea id=input autocomplete=off></textarea>
+<button type=button class=back id=button_5></button>
+<button type=button class=send id=button_6></button>
+</form>
+<div class=mask id=mask></div>
+</div>
+</div>
+<script src=./dist/script/bundle.js></script>
+</body>
+</html>

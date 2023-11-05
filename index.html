@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="./icon.png" />
+    <title>Navigator</title>
+    <style>
+      * {
+        margin: 0;
+        box-sizing: border-box;
+        padding: 0;
+        font-family: sans-serif;
+        -webkit-user-select: none;
+        user-select: none;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      html,
+      body {
+        height: 100%;
+        width: 100%;
+      }
+      body {
+        background-color: #e8ffce;
+      }
+      .container {
+        display: flex;
+        height: 100%;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        overflow: hidden;
+      }
+      .left {
+        display: flex;
+        flex: 1;
+        opacity: 0;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: #42855b;
+        font-size: 3.5vmax;
+        animation: movefrombottom 1s ease-out forwards;
+      }
+      .left a {
+        margin-top: 1.25vmax;
+        opacity: 0;
+        padding: 0.6vmax 1.2vmax;
+        border-radius: 100vmax;
+        background-color: #42855b;
+        color: #e8ffce;
+        font-size: 0.3em;
+        animation: showout 0.5s 0.5s ease-out forwards;
+      }
+      .left h6 {
+        margin-top: -0.295em;
+      }
+      .right {
+        display: flex;
+        margin-right: 2.5%;
+        flex: 1;
+        height: 90%;
+        opacity: 0;
+        border-radius: 1em;
+        box-shadow: 0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+        background-color: #42855bd6;
+        padding: 1em;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        color: #e8ffce;
+        font-size: 3vmin;
+        word-break: keep-all;
+        animation: movefromright 0.5s 0.5s ease-out forwards;
+      }
+      .right ul {
+        list-style: none;
+        width: 25em;
+      }
+      .right ul li {
+        display: flex;
+        margin-top: 0.6em;
+        height: 4.25em;
+        border-radius: 100vmax;
+        background-color: #e8ffce;
+        padding: 0 1.75em;
+        justify-content: space-around;
+        align-items: center;
+        color: #42855b;
+      }
+      .right ul li .text {
+        display: flex;
+        height: 75%;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        font-size: 0.85em;
+      }
+      .right ul li .text img {
+        height: 1.5em;
+        width: 1.5em;
+      }
+      .right ul li a {
+        border-radius: 5em;
+        background-color: #42855b;
+        padding: 0.6em 1.2em;
+        font-size: 0.75em;
+        color: #e8ffce;
+      }
+      @keyframes movefrombottom {
+        0% {
+          opacity: 0;
+          transform: scale(80%) translateY(50%);
+        }
+        50% {
+          opacity: 1;
+          transform: translateY(12.5%);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes showout {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      @keyframes movefromright {
+        0% {
+          opacity: 0;
+          transform: translateX(-10%) scale(90%);
+        }
+        100% {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+      @media (orientation: portrait) {
+        .container {
+          flex-direction: column;
+        }
+        .right {
+          flex: 2;
+          margin-right: 0;
+          margin-bottom: 5%;
+          width: 90%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="left">
+        <h1>Websites</h1>
+        <h6>By TDF</h6>
+        <a
+          target="_blank"
+          href="https://github.com/tdf-sharing/tdf-sharing.github.io"
+          >查看仓库</a
+        >
+      </div>
+      <div class="right">
+        <h2>网站列表</h2>
+        <ul>
+          <li>
+            <div class="text">
+              <img
+                src="./Asymmetric-Encryption-for-Online-Chat/dist/img/icon.svg"
+              />
+              <span>&nbsp;非对称会话加密</span>
+            </div>
+            <a
+              target="_blank"
+              href="./Asymmetric-Encryption-for-Online-Chat/index.html"
+              >查看网站</a
+            >
+            <a
+              target="_blank"
+              href="https://github.com/tdf-sharing/tdf-sharing.github.io/tree/main/Asymmetric-Encryption-for-Online-Chat"
+              >查看仓库</a
+            >
+          </li>
+          <li>
+            <div class="text">
+              <img
+                src="./E-Shop/assets/logo-892e9fbd.png"
+              />
+              <span>&nbsp;EShop电商项目</span>
+            </div>
+            <a
+              target="_blank"
+              href="./E-Shop/index.html"
+              >查看网站</a
+            >
+            <a
+              target="_blank"
+              href="https://github.com/tdf-sharing/tdf-sharing.github.io/tree/main/E-Shop"
+              >查看仓库</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

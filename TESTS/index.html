@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CPU Performance</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: sans-serif;
+      }
+      html,
+      body,
+      .container {
+        height: 100%;
+      }
+      .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      .container h2 {
+        margin-top: 5.5px;
+        color: #aaa;
+        font-size: 16px;
+        font-weight: normal;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 id="per">测算中 ...</h1>
+      <h2 id="time"></h2>
+      <h2 id="total"></h2>
+    </div>
+    <script>
+      const urlQuery = new URLSearchParams(window.location.search);
+      const Query = {};
+      urlQuery.forEach(function (value, key) {
+        Query[key] = value;
+      });
+      const totalIterations = Number(Query.i) ? Number(Query.i) : 100000000000;
+      const cpuCount = navigator.hardwareConcurrency;
+      const iterationsPerWorker = Math.ceil(totalIterations / cpuCount);
+      const workers = [];
+      const per = document.getElementById("per");
+      const time = document.getElementById("time");
+      const total = document.getElementById("total");
+      let flag = 0;
+      let result = 0;
+      // 创建 Web Worker
+      for (let i = 0; i < cpuCount; i++) {
+        const worker = new Worker("worker.js");
+        // 监听 Web Worker 的消息
+        worker.onmessage = function (event) {
+          flag++;
+          // 处理 Web Worker 的结果
+          result += event.data;
+          // 检查是否所有 Web Worker 都已完成计算
+          if (flag === cpuCount) {
+            const totalTime = performance.now() - startTime;
+            per.innerText = `${Math.ceil(
+              result / totalTime / 100000
+            )} 亿次 / 秒 - ${cpuCount} 线程`;
+            time.innerText = `耗时：${totalTime.toFixed(2)} ms`;
+            total.innerText = `迭代：${result} 次`;
+          }
+        };
+        workers.push(worker);
+      }
+      const startTime = performance.now();
+      // 向 Web Worker 发送迭代数
+      workers.forEach((x) => x.postMessage(iterationsPerWorker));
+    </script>
+  </body>
+</html>
