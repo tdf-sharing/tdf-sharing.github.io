@@ -1,0 +1,1 @@
+import{a2 as e,h as a}from"./index-6ff172c9.js";import{G as r}from"./category-00be04ac.js";const n=e("category",()=>{const t=a([]);return{listdata:t,get_list:async()=>{t.value=(await r()).result}}});export{n as U};

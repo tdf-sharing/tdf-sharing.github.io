@@ -1,0 +1,1 @@
+import{$ as r}from"./index-6ff172c9.js";const e=function(){return r({url:"/home/category/head"})},a=t=>r({url:"/category",params:{id:t}}),s=t=>r({url:"/category/sub/filter",params:{id:t}}),n=t=>r({url:"/category/goods/temporary",method:"POST",data:t});export{e as G,a,s as b,n as c};

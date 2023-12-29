@@ -1,18 +1,4 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
-import Login from '@/views/Login/Login-index.vue';
-import Main from '@/views/Main/Main-index.vue';
-import Home from '@/views/Home/Home-index.vue';
-import Category from '@/views/Category/Category-index.vue';
-import SubCategory from '@/views/SubCategory/SubCategory-index.vue';
-import Product from '@/views/Product/Product-index.vue';
-import CartList from '@/views/CartList/CartList-index.vue';
-import Check from '@/views/Check/Check-index.vue';
-import Pay from '@/views/Pay/Pay-index.vue';
-import Payback from '@/views/Pay/PayBack-index.vue';
-import OrderDetail from '@/views/Order/Order-index.vue';
-import User from '@/views/User/User-index.vue';
-import UserInfo from '@/views/User/components/Info-index.vue';
-import UserOrder from '@/views/User/components/Order-index.vue';
 import { UseMessage } from '@/composables/groupedmessage';
 import { UseBusStore } from '@/stores/bus.js';
 import { UseUserStore } from '@/stores/user.js';
@@ -29,68 +15,68 @@ const router = createRouter({
   routes: [
     {
       path: '',
-      component: Main,
+      component: () => import('@/views/Main/Main-index.vue'),
       children: [
         {
           path: '',
-          component: Home
+          component: () => import('@/views/Home/Home-index.vue')
         },
         {
           path: 'category/:id',
-          component: Category
+          component: () => import('@/views/Category/Category-index.vue')
         },
         {
           path: 'category/sub/:id',
-          component: SubCategory
+          component: () => import('@/views/SubCategory/SubCategory-index.vue')
         },
         {
           path: 'product/:id',
-          component: Product
+          component: () => import('@/views/Product/Product-index.vue')
         },
         {
           path: 'cartlist',
-          component: CartList
+          component: () => import('@/views/CartList/CartList-index.vue')
         },
         {
           path: 'check',
-          component: Check,
+          component: () => import('@/views/Check/Check-index.vue'),
           beforeEnter: (to, _, next) => guard(to, next)
         },
         {
           path: 'pay',
-          component: Pay,
+          component: () => import('@/views/Pay/Pay-index.vue'),
           beforeEnter: (to, _, next) => guard(to, next)
         },
         {
           path: 'paycallback',
-          component: Payback,
+          component: () => import('@/views/Pay/PayBack-index.vue'),
           beforeEnter: (to, _, next) => guard(to, next)
         },
         {
           path: 'user',
-          component: User,
+          component: () => import('@/views/User/User-index.vue'),
           beforeEnter: (to, _, next) => guard(to, next),
           children: [
             {
               path: '',
-              component: UserInfo
+              component: () => import('@/views/User/components/Info-index.vue')
             },
             {
               path: 'order',
-              component: UserOrder
+              component: () => import('@/views/User/components/Order-index.vue')
             }
           ]
         },
         {
           path: 'order/:id',
-          component: OrderDetail,
+          component: () => import('@/views/Order/Order-index.vue'),
           beforeEnter: (to, _, next) => guard(to, next)
         }
       ]
     },
     {
       path: '/login',
-      component: Login,
+      component: () => import('@/views/Login/Login-index.vue'),
       beforeEnter: (to, from, next) => {
         if (!UseUserStore().userinfo.token) next();
         else router.replace('/');

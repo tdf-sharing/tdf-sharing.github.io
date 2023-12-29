@@ -1,0 +1,1 @@
+import{$ as e}from"./index-6ff172c9.js";const t=()=>e({url:"/member/order/pre"}),a=r=>e({url:"/member/address",method:"POST",data:r}),d=r=>e({url:`/member/address/${r}`,method:"DELETE"}),o=r=>e({url:"/member/order",method:"POST",data:r}),m=r=>e({url:`/member/order/${r}`}),n=r=>e({url:"pay/mock",method:"GET",params:{orderId:r}});export{a as A,o as C,d as D,t as G,n as P,m as a};
